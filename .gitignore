@@ -1,0 +1,11 @@
+
+Api/Api/appsettings.json
+*.dll
+*.exe
+*.pdb
+Api/Api/bin/Debug/netcoreapp3.1/appsettings.json
+Api/Api/bin/Debug/netcoreapp3.1/Properties/launchSettings.json
+Api/Api/bin/Debug/netcoreapp3.1/appsettings.Development.json
+Api/Api/bin/Debug/netcoreapp3.1/Api.runtimeconfig.json
+Api/Api/bin/Debug/netcoreapp3.1/Api.runtimeconfig.dev.json
+Api/Api/bin/Debug/netcoreapp3.1/Api.deps.json

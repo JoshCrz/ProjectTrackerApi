@@ -2,13 +2,23 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Api.Entities;
+using Api.Services;
+using Api.Services.Interfaces;
+using Api.Services.Profiles;
+using Api.Services.Repositories;
+using Api.Services.Repositories.Interfaces;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace Api
 {
@@ -24,7 +34,26 @@ namespace Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+          
+            services.AddScoped<IProjectsRepository, ProjectsRepository>();
+            services.AddScoped<IProjectsService, ProjectsService>();
+            services.AddScoped<IProjectsTasksRepository, ProjectsTasksRepository>();
+            services.AddScoped<IProjectTasksService, ProjectTaskService>();
+
+            services.AddControllers(setupAction =>
+            {
+                setupAction.ReturnHttpNotAcceptable = true;
+            });
+               /* .AddXmlDataContractSerializerFormatters()
+              .AddNewtonsoftJson(setupAction =>
+            {
+                setupAction.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            });*/
+
+            services.AddDbContext<ProjectTrackerContext>
+                (opt => opt.UseSqlServer(Configuration.GetConnectionString("ProjectsTrackerDb")));            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
