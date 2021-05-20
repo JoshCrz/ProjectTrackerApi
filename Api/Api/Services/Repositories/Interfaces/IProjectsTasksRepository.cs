@@ -11,6 +11,7 @@ namespace Api.Services.Repositories.Interfaces
         //GET 
         ProjectTask GetProjectTaskById(int id);
         IEnumerable<ProjectTask> GetAllProjectTasks();
+        IEnumerable<ProjectTask> GetAllActiveProjectTasks();
         IEnumerable<ProjectTask> GetAllProjectTasksByProjectId(int projectId);
         IEnumerable<ProjectTask> GetAllProjectTasksByUserId(int userId);
         bool DoesProjectTaskExist(int projectTaskId);

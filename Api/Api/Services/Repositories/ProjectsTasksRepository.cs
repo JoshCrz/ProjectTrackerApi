@@ -46,6 +46,11 @@ namespace Api.Services.Repositories
             return _context.ProjectTasks.ToList();
         }
 
+        public IEnumerable<ProjectTask> GetAllActiveProjectTasks()
+        {
+            return _context.ProjectTasks.Where(task => task.IsActive == true).ToList();
+        }
+
         public IEnumerable<ProjectTask> GetAllProjectTasksByProjectId(int projectId)
         {
             return _context.ProjectTasks.Where(task => task.ProjectId == projectId).ToList();            

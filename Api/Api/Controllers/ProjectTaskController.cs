@@ -21,9 +21,9 @@ namespace Api.Controllers
 
         #region GET
         [HttpGet()]
-        public IActionResult GetAllProjectTasks()
+        public IActionResult GetAllProjectTasks(bool activeOnly = false)
         {
-            return Ok(_projectTaskService.GetAllProjectTasks());
+            return Ok(_projectTaskService.GetAllProjectTasks(activeOnly));
         }
 
         [HttpGet("project/{projectId}")]

@@ -24,6 +24,8 @@ namespace Api
 {
     public class Startup
     {
+        readonly string myOrigin = "_myOrigin";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -34,6 +36,18 @@ namespace Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // cors
+            services.AddCors(c =>
+            {
+                c.AddPolicy("TCAPolicy", builder =>
+                {
+                    builder.SetIsOriginAllowed(s => true)
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+                });
+            });
+
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
           
@@ -65,6 +79,8 @@ namespace Api
             }
 
             app.UseRouting();
+
+            app.UseCors("TCAPolicy");
 
             app.UseAuthorization();
 

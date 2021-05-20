@@ -1,6 +1,7 @@
 ﻿using Api.Entities;
 using Api.Models.Projects;
 using Api.Services.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,9 +29,23 @@ namespace Api.Services.Repositories
             return _context.Projects.Where(project => project.UserId == userId).ToList();
         }
 
+        public IEnumerable<Project> GetAllCompletedProjects()
+        {
+            var projects = _context.Projects
+                .Where(p => p.IsComplete == true)
+                .Include(project => project.Tasks)
+                .OrderBy(p => p.CompletedDate);
+
+            return projects;
+
+        }
+
         public Project GetProjectById(int projectId)
         {
-            return _context.Projects.Where(project => project.ProjectId == projectId).FirstOrDefault();
+            return _context.Projects
+                .Where(project => project.ProjectId == projectId)
+                .Include(project => project.Tasks)
+                .FirstOrDefault();
         }
 
         public bool DoesProjectExist(int projectId)

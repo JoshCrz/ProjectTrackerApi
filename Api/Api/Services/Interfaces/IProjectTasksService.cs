@@ -10,7 +10,7 @@ namespace Api.Services.Interfaces
     {
         //GET 
         ProjectTaskDto GetProjectTaskById(int id);
-        IEnumerable<ProjectTaskDto> GetAllProjectTasks();
+        IEnumerable<ProjectTaskDto> GetAllProjectTasks(bool activeOnly);
         IEnumerable<ProjectTaskDto> GetAllProjectTasksByProjectId(int projectId);
         IEnumerable<ProjectTaskDto> GetAllProjectsTasksByUserId(int userId);
 

@@ -17,6 +17,8 @@ namespace Api.Services.Profiles
             CreateMap<Project, ProjectDto>().ReverseMap();
             CreateMap<ProjectCreateDto, Project>();
             CreateMap<ProjectUpdateDto, Project>().ReverseMap();
+            CreateMap<ProjectAndTasksDto, Project>().ReverseMap();
+
 
             //project task
             CreateMap<ProjectTaskDto, ProjectTask>().ReverseMap();

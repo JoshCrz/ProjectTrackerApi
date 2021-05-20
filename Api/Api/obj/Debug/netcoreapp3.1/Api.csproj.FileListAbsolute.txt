@@ -2,7 +2,6 @@ C:\Github\ProjectTrackerApi\Api\Api\bin\Debug\netcoreapp3.1\appsettings.Developm
 C:\Github\ProjectTrackerApi\Api\Api\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Github\ProjectTrackerApi\Api\Api\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 C:\Github\ProjectTrackerApi\Api\Api\bin\Debug\netcoreapp3.1\Api.exe
-C:\Github\ProjectTrackerApi\Api\Api\obj\Debug\netcoreapp3.1\Api.csprojAssemblyReference.cache
 C:\Github\ProjectTrackerApi\Api\Api\obj\Debug\netcoreapp3.1\Api.AssemblyInfoInputs.cache
 C:\Github\ProjectTrackerApi\Api\Api\obj\Debug\netcoreapp3.1\Api.AssemblyInfo.cs
 C:\Github\ProjectTrackerApi\Api\Api\obj\Debug\netcoreapp3.1\Api.RazorTargetAssemblyInfo.cache
@@ -43,3 +42,4 @@ C:\Github\ProjectTrackerApi\Api\Api\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore
 C:\Github\ProjectTrackerApi\Api\Api\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
 C:\Github\ProjectTrackerApi\Api\Api\obj\Debug\netcoreapp3.1\Api.csproj.CoreCompileInputs.cache
 C:\Github\ProjectTrackerApi\Api\Api\obj\Debug\netcoreapp3.1\Api.MvcApplicationPartsAssemblyInfo.cache
+C:\Github\ProjectTrackerApi\Api\Api\obj\Debug\netcoreapp3.1\Api.csprojAssemblyReference.cache

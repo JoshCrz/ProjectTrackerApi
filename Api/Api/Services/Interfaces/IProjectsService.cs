@@ -11,9 +11,11 @@ namespace Api.Services.Interfaces
     public interface IProjectsService
     {
         //GET
-        ProjectDto GetProjectById(int id);
+        ProjectAndTasksDto GetProjectById(int id);
         IEnumerable<ProjectDto> GetAllProjects();
         IEnumerable<ProjectDto> GetAllProjectsByUserId(int userId);
+
+        IEnumerable<ProjectAndTasksDto> GetAllExpiredProjects();
 
         //POST
         ProjectDto CreateProject(ProjectCreateDto projectToCreate);

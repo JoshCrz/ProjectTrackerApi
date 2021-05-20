@@ -18,6 +18,9 @@ namespace Api.Models.ProjectTasks
         public bool IsActive { get; set; }
         public bool IsComplete { get; set; }
         public DateTime? CompletedDate { get; set; }
+
+        public int Hours { get; set; }
+
         //Foreign Key
         public int UserId { get; set; }
 

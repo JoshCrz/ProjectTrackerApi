@@ -18,9 +18,13 @@ namespace Api.Entities
         public string Description { get; set; }
         public bool IsActive { get; set; }
         public bool IsComplete { get; set; }
-        DateTime? CompletedDate { get; set; }
+        public DateTime? CompletedDate { get; set; }
+
 
         //Foreign Key
         public int UserId { get; set; }
+
+        public virtual ICollection<ProjectTask> Tasks { get; set; }
+
     }
 }

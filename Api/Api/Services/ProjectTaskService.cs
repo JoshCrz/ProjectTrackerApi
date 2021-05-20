@@ -52,10 +52,18 @@ namespace Api.Services
             return _mapper.Map<IEnumerable<ProjectTaskDto>>(projectTasks);
         }
 
-        public IEnumerable<ProjectTaskDto> GetAllProjectTasks()
+        public IEnumerable<ProjectTaskDto> GetAllProjectTasks(bool activeOnly)
         {
-            var projectTasks = _projectTasksRepository.GetAllProjectTasks();
+            IEnumerable<ProjectTask> projectTasks;
 
+            if(activeOnly == true)
+            {
+                projectTasks = _projectTasksRepository.GetAllActiveProjectTasks();
+            } else
+            {
+                projectTasks = _projectTasksRepository.GetAllProjectTasks();
+            }
+            
             return _mapper.Map<IEnumerable<ProjectTaskDto>>(projectTasks);
         }
 

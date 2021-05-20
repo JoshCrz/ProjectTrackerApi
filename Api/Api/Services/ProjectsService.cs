@@ -37,8 +37,15 @@ namespace Api.Services
 
             return _mapper.Map<IEnumerable<ProjectDto>>(projects);            
         }
+        
+        public IEnumerable<ProjectAndTasksDto> GetAllExpiredProjects()
+        {
+            var projects = _projectsRepository.GetAllCompletedProjects();
 
-        public ProjectDto GetProjectById(int projectId)
+            return _mapper.Map<IEnumerable<ProjectAndTasksDto>>(projects);
+        }
+
+        public ProjectAndTasksDto GetProjectById(int projectId)
         {
             var projectToReturn = _projectsRepository.GetProjectById(projectId);
 
@@ -47,7 +54,7 @@ namespace Api.Services
                 return null;
             }
 
-            return _mapper.Map<ProjectDto>(projectToReturn);
+            return _mapper.Map<ProjectAndTasksDto>(projectToReturn);
         }
         #endregion
 

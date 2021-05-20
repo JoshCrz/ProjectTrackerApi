@@ -13,6 +13,9 @@ namespace Api.Services.Repositories.Interfaces
         Project GetProjectById(int id);
         IEnumerable<Project> GetAllProjects();
         IEnumerable<Project> GetAllProjectsByUserId(int userId);
+
+        IEnumerable<Project> GetAllCompletedProjects();
+
         bool DoesProjectExist(int projectId);
 
         //POST

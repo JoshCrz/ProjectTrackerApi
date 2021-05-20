@@ -4,12 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using Api.Models.Projects;
 using Api.Services.Interfaces;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers
 {
+    //[EnableCors("TCAPolicy")]
     [Route("api/[controller]")]
     [ApiController]
     public class ProjectsController : ControllerBase
@@ -55,6 +57,12 @@ namespace Api.Controllers
                 return BadRequest();
             }
             
+        }
+
+        [HttpGet("completed")]
+        public IActionResult GetAllCompletedProjects()
+        {
+            return Ok(_projectsService.GetAllExpiredProjects());
         }
 
         //get all projects by userId
@@ -108,7 +116,7 @@ namespace Api.Controllers
         }
 
         [HttpPut("{projectId}")]
-        public IActionResult UpdateProject(int projectId, ProjectUpdateDto projectToUpdate)
+        public IActionResult UpdateProject(int projectId, [FromBody] ProjectUpdateDto projectToUpdate)
         {
             if (_projectsService.GetProjectById(projectId) == null)
             {
@@ -120,6 +128,23 @@ namespace Api.Controllers
 
             return Ok(updatedProject);
         }        
+
+        [HttpPut("completed/{projectId}")]
+        public IActionResult CompletedProject(int projectId, ProjectUpdateDto projectToUpdate)
+        {
+            if (_projectsService.GetProjectById(projectId) == null)
+            {
+                //couldn't find the project
+                return NotFound();
+            }
+
+            projectToUpdate.CompletedDate = DateTime.UtcNow;
+            projectToUpdate.IsComplete = true;
+
+            var updatedProject = _projectsService.UpdateProject(projectId, projectToUpdate);
+
+            return Ok(updatedProject);
+        }
 
         [HttpPatch("{projectId}")]
         public IActionResult UpdateProject(int projectId, JsonPatchDocument<ProjectUpdateDto> updateProject)

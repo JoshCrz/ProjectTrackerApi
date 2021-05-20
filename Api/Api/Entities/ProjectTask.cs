@@ -20,6 +20,8 @@ namespace Api.Entities
         public bool IsComplete { get; set; }
         DateTime? CompletedDate { get; set; }
 
+        public int Hours { get; set; }
+
         //Foreign Keys        
         public int UserId { get; set; }
 
