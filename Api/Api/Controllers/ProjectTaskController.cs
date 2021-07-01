@@ -93,10 +93,11 @@ namespace Api.Controllers
 
                 if(projectDelete != null)
                 {
-                    return Ok();
+                    return BadRequest();
+                    
                 } else
                 {
-                    return BadRequest();
+                    return Ok(true);
                 }
             } else
             {

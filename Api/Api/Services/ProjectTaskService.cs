@@ -36,7 +36,7 @@ namespace Api.Services
         {
             if (_projectTasksRepository.DoesProjectTaskExist(projectTaskId))
             {
-                _projectTasksRepository.DoesProjectTaskExist(projectTaskId);
+                _projectTasksRepository.DeleteProjectTask(projectTaskId);
 
                 return _projectTasksRepository.Save();
             } else

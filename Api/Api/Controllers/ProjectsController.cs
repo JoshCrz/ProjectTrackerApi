@@ -86,10 +86,7 @@ namespace Api.Controllers
                 return BadRequest();
             }
         }
-
-        //update a project
-
-        
+                
         //delete a project
         [HttpDelete("{projectId}")]
         public IActionResult DeleteProject(int projectId)
@@ -104,7 +101,7 @@ namespace Api.Controllers
 
                 if(projectDeleted != null)
                 {
-                    return Ok();
+                    return Ok(true);
                 } else
                 {
                     return BadRequest();
